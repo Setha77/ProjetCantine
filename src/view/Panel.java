@@ -1,8 +1,14 @@
 package view;
 
+import javax.swing.JPanel;
+
+import controller.controller;
+
 public class Panel {
     
 
-    privatete controller baseController;
-    public Panel(controller  baseController)
+    private controller baseController;
+    public Panel(controller  baseController){
+        this.baseController = baseController;
+    }
 }
