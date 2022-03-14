@@ -2,17 +2,17 @@ package model;
 
 import java.util.ArrayList;
 
+
 public class Aliments {
 
-ArrayList Alim = new ArrayList();  
 String nomAlim;
 String allergene;
-int quantite;
 
-public Aliments (String nomAlim, String allergene, int quantite){
-this.nomAlim = nomAlim;
-this.allergene = allergene;
-this.quantite = quantite;
+
+
+public Aliments (String nomAlim, String allergene){
+    this.nomAlim = nomAlim;
+    this.allergene = allergene;
 }
 
 public enum AlimType {  
@@ -20,15 +20,15 @@ public enum AlimType {
 }
 
 public String getNomAlim(){
-return nomAlim;
+    return nomAlim;
 }
 
 public String getAllergene(){
     return allergene;
 }
 
-public int getQuantite(){
-    return quantite;
-}
+
 
 }
+
+

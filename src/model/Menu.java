@@ -1,9 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Menu {
-    Plat entree;
-    Plat repas;
-    Plat dessert;
+
+    
+    Session session;
+    private Plat entree;
+    private Plat repas;
+    private Plat dessert;
 
     public Menu(Plat e, Plat r, Plat d){
         this.entree = e;
@@ -11,6 +16,14 @@ public class Menu {
         this.dessert = d;
 
     }
+
+
+    
+
+
+
+
+
 
     public Plat GetEntree(){
         return this.entree;
@@ -25,4 +38,34 @@ public class Menu {
     }
 
 
+    public boolean SetEntree(Plat e){
+        if(e.type!="Entree" || this.entree == e){
+            return false;
+        } else {
+            this.entree=e;
+        }
+         return true;
+    }
+
+    public boolean SetRepas(Plat r){
+        if(r.type!="Repas"|| this.repas == r){
+                return false;
+            }
+            else {
+            this.repas=r;
+            }
+        return true;
+    }
+    
+
+    public boolean SetDessert(Plat d){
+        if(d.type!="Dessert" || this.dessert == d){
+           return false;
+        } else {
+            this.dessert = d;
+        }
+        return true;
+    }
+
+    
 }

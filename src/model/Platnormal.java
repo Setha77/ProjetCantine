@@ -1,16 +1,17 @@
 package model;
 import java.util.ArrayList;
 
-public class Platvege extends Plat{
+public class Platnormal extends Plat{
 
-    ArrayList<Alimentveg> composants = new ArrayList<Alimentveg>();
+    ArrayList<Aliments> composants = new ArrayList<Aliments>();
 
-    
-    public Platvege(String n, String t) {
+    public Platnormal(String n, String t) {
         super(n, t);
+      
     }
 
-    public boolean ajouter(Alimentveg a){
+
+    public boolean ajouter(Aliments a){
         if(!composants.contains(a)){
             composants.add(a);
             return true;
@@ -18,10 +19,5 @@ public class Platvege extends Plat{
         else return false;
     }
 
+
 }
-
-
-
-
-
-

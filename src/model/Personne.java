@@ -5,18 +5,18 @@ public class Personne {
     String nom;
     String prenom;
     String sexe;
-    Date dateNaissance; //Voir date apres
+    String dateNaissance; //Voir date apres
 
     //CONSTRUCTEUR
 
-    public Personne(String n, String p, String s, Date d){
+    public Personne(String n, String p, String s, String d){
         this.nom = n;
         this.prenom = p;
         this.sexe = s;
         this.dateNaissance= d;
     }
 
-    //GUETTEURS 
+    //GUETTERS 
 
     public String GetNom(){
         return this.nom;
@@ -30,7 +30,7 @@ public class Personne {
         return this.sexe;
     }
     
-    public Date GetDateNaissance(){
+    public String GetDateNaissance(){
         return this.dateNaissance;
     }
 
