@@ -10,14 +10,14 @@ public class Platvege extends Plat{
         super(n, t);
     }
 
-    public boolean ajouter(Alimentveg a){
+  /*  public boolean ajouter(Alimentveg a){
         if(!composants.contains(a)){
             composants.add(a);
             return true;
         }
         else return false;
     }
-
+*/
 }
 
 

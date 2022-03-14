@@ -11,7 +11,7 @@ public class Platnormal extends Plat{
     }
 
 
-    public boolean ajouter(Aliments a){
+   /* public boolean ajouter(Aliments a){
         if(!composants.contains(a)){
             composants.add(a);
             return true;
@@ -19,5 +19,5 @@ public class Platnormal extends Plat{
         else return false;
     }
 
-
+*/
 }
