@@ -1,5 +1,5 @@
 package model;
-import java.util.*;
+//import java.util.*;
 
 public class Personne {
     String nom;
@@ -33,5 +33,40 @@ public class Personne {
     public String GetDateNaissance(){
         return this.dateNaissance;
     }
+    // Setters
+    public boolean SetNom(String nom){
+        if(this.nom == nom){
+            return false;
+        } else {
+            this.nom = nom;
+            return true;
+        }
+    }
 
+    public boolean SetPrenom(String prenom){
+        if(this.prenom == prenom){
+            return false;
+        } else {
+            this.prenom = prenom;
+            return true;
+        }
+    }
+
+    public boolean SetDate(String date){
+        if(this.dateNaissance == date){
+            return false;
+        } else {
+            this.dateNaissance = date;
+            return true;
+        }
+    }
+
+    public boolean SetSexe(String sexe){
+        if(this.sexe == sexe){
+            return false;
+        } else {
+            this.sexe = sexe;
+            return true;
+        }
+    }
 }

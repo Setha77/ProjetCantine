@@ -1,29 +1,29 @@
 package model;
 import java.util.ArrayList;
-import java.sql.Date;
 
 public class Enfant extends Personne {
 
-    Parent parent1;
-    Parent parent2;
+    Parent parent1, parent2;
+     
 
-     ArrayList<Parent> Parents = new ArrayList<Parent>();
+    ArrayList<Parent> Parents = new ArrayList<Parent>();
   
-
     public Enfant(Parent p1, Parent p2, String n, String p, String s,String d) {
 		super(n, p, s, d);
         this.parent1 = p1;
         this.parent2 = p2;
-		//TODO Auto-generated constructor stub
 	}
 
 
 
-    public void ajouterP(Parent p){
-
-        Parents.add(p);
-
+    public boolean ajouterP(Parent p){
+        if (!(this.Parents.contains(p))) {
+            return Parents.add(p);
+        } else {
+            return false;
+        }
     }
+    
 	public String GetNomE(){
         return this.nom;
     }

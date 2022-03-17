@@ -1,14 +1,12 @@
 package model;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 
 public class Aliments {
 
 String nomAlim;
 String allergene;
-
-
 
 public Aliments (String nomAlim, String allergene){
     this.nomAlim = nomAlim;

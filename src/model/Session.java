@@ -45,7 +45,21 @@ public class Session {
         this.listeMenu.add(m);
     }
 
-    public void ajouteEnfant(Enfant e){
-        this.listeEnfants.add(e);
+    public boolean ajouteEnfant(Enfant e){
+        if (!(this.listeEnfants.contains(e))) {
+            nbrPlace -= 1;
+            return this.listeEnfants.add(e);
+        } else {
+            return false;
+        }
+    }
+
+    public boolean supprimerEnfant(Enfant e){
+        if(this.listeEnfants.contains(e)){
+            nbrPlace += 1;
+            return this.listeEnfants.remove(e);
+        } else {
+            return false;
+        }
     }
 }

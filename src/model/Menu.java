@@ -1,10 +1,9 @@
 package model;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Menu {
 
-    
     Session session;
     private Plat entree;
     private Plat repas;
@@ -17,14 +16,6 @@ public class Menu {
 
     }
     
-
-
-
-
-
-
-
-
     public Plat GetEntree(){
         return this.entree;
     }
@@ -59,13 +50,22 @@ public class Menu {
     
 
     public boolean SetDessert(Plat d){
-        if(d.type!="Dessert" || this.dessert == d){
+        if(d.type !="Dessert" || this.dessert == d){
            return false;
         } else {
             this.dessert = d;
+            return true;
         }
-        return true;
+        
     }
 
+    public boolean addSession(Session session){
+        if (this.session == session) {
+            return false;
+        } else {
+            this.session = session;
+            return true;
+        }
+    }
     
 }
