@@ -4,7 +4,7 @@ package model;
 
 public class Menu {
 
-    Session session;
+    private Session session;
     private Plat entree;
     private Plat repas;
     private Plat dessert;
@@ -16,6 +16,9 @@ public class Menu {
 
     }
     
+    public Menu(String entree2, String repas2, String dessert2) {
+    }
+
     public Plat GetEntree(){
         return this.entree;
     }

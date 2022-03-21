@@ -7,8 +7,8 @@ import controller.controller;
 public class Panel extends JPanel{
     
 
-    private controller baseController;
+    //private controller baseController;
     public Panel(controller  baseController){
-        this.baseController = baseController;
+        //this.baseController = baseController;
     }
 }

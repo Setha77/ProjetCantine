@@ -33,6 +33,12 @@ public class App {
         c.creerAlimentveg("citron", "aucun");
         c.creerAlimentveg("riz", "gluten");
         c.creerAlimentveg("sucre", "aucun");
+        c.creerAlimentveg("pomme", "aucun");
+        c.creerAlimentveg("banane", "aucun");
+        c.creerAliment("fromage", "lactose");
+        c.creerAliment("chocolat", "aucun");
+        c.creerAliment("chou rouge", "aucun");
+        c.creerAliment("celeri rave", "aucun");
 
         // Plat  carni 
         c.creerAliment("boeuf", "aucun");
@@ -86,15 +92,63 @@ public class App {
         c.addComposant("Boeuf Bourguignon", "pomme de terre");
         c.addComposant("Boeuf Bourguignon", "riz");
         
+        
 
+
+        // Dessert 
+
+        c.creerPlatvege("Tarte aux pommes","dessert");
+        c.addComposant("Tarte aux pommes", "pomme");
+
+        c.creerPlatvege("Banane", "dessert");
+        c.addComposant("Banane", "banane");
+
+        c.creerPlatvege("Compote de pomme", "dessert");
+        c.addComposant("Compote de pomme", "pomme");
+
+        c.creerPlatvege("Fromage blanc", "dessert");
+        c.addComposant("Fromage blanc", "fromage");
+
+        c.creerPlatvege("Moëlleux au chocolat", "dessert");
+        c.addComposant("Moëlleux au chocolat", "chocolat");
+        c.addComposant("Moëlleux au chocolat", "farine");
+        c.addComposant("Moëlleux au chocolat", "oeuf");
+        c.addComposant("Moëlleux au chocolat", "farine");
+        c.addComposant("Moëlleux au chocolat", "sucre");
+        c.addComposant("Moëlleux au chocolat", "beurre");
+        
+
+        
+        // Entrée
+
+        c.creerPlatvege("Celeri remoulade", "entree");
+        c.addComposant("Celeri remoulade", "celeri rave");
+        c.addComposant("Celeri remoulade", "oeuf");
+        c.addComposant("Celeri remoulade", "citron");
+
+        c.creerPlatvege("Salade de chou rouge", "entree");
+        c.addComposant("Salade de chou rouge", "oignon");
+        c.addComposant("Salade de chou rouge", "chou rouge");
+        c.addComposant("Salade de chou rouge", "citron");
+        c.addComposant("Salade de chou rouge", "poivre");
+
+        // creer menu 
+
+        c.creerMenu("Celeri remoulade", "Boeuf Bourguignon", "Compote de pomme");
+        
+     
+     for (int i = 0 ; i<c.menus.size(); i++){
+            System.out.println(c.menus.get(i).GetEntree());
+        }
+     
        /* for(int i=0; i<c.plats.size();i++){
             System.out.println(c.plats.get(i).nomPlat);
-        }*/
+        }
        for(int i=0; i<c.plats.size();i++){
             System.out.println(c.plats.get(i).nomPlat + " : ");
             for(int j=0;j<c.plats.get(i).composants.size();j++){
                  System.out.println(c.plats.get(i).composants.get(j).nomAlim);
             }
-       }
+       }*/
     }
 }

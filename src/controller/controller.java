@@ -1,12 +1,12 @@
 package controller;
 
-import view.Frame;
+//import view.Frame;
 
 public class controller {
-    private Frame appFrame;
+    //private Frame appFrame;
 
     public void start()
     {
-        appFrame = new Frame(this); 
+        //appFrame = new Frame(this); 
     }
 }

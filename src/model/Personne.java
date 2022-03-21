@@ -2,10 +2,10 @@ package model;
 //import java.util.*;
 
 public class Personne {
-    String nom;
-    String prenom;
-    String sexe;
-    String dateNaissance; //Voir date apres
+    protected String nom;
+    protected String prenom;
+    protected String sexe;
+    protected String dateNaissance; //Voir date apres
 
     //CONSTRUCTEUR
 

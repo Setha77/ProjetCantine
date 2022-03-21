@@ -6,7 +6,8 @@ public class Enfant extends Personne {
     Parent parent1, parent2;
      
 
-    ArrayList<Parent> Parents = new ArrayList<Parent>();
+    ArrayList<Parent> Parents = new ArrayList<Parent>();/* pourquoi utiliser ArrayList pour stocker
+                                                           les parents de l'enfant alors qu'on utilise deux variables parents ?*/
   
     public Enfant(Parent p1, Parent p2, String n, String p, String s,String d) {
 		super(n, p, s, d);
