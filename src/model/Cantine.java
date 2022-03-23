@@ -1,5 +1,6 @@
 package model;
 
+
 import java.util.ArrayList;
 
 public class Cantine {
@@ -11,13 +12,20 @@ public class Cantine {
 
     ArrayList<Platvege> platsvege = new ArrayList<Platvege>();
     ArrayList<Plat> plats = new ArrayList<Plat>();
+    ArrayList<Session> ses
 
     Administrateur admin;
 
     public Cantine(Administrateur a){
         this.admin = a;
     }
+
     // méthodes
+
+    public boolean creerSession(String date, String heure, int nbrPlace, Menu mn, Menu mv){
+		sessions.add()
+	}
+
 
     public Aliments GetAlimentByName(String nom) {
 
@@ -59,6 +67,8 @@ public class Cantine {
         }
         return (null);
     }
+
+
 
     public boolean creerAlimentveg(String n, String allergene) { // C'est pas mieux de déplacer cette méthode dans administrateur ? C'est plutôt lui qui va créer les aliments et non la cantine
 
@@ -119,16 +129,32 @@ public class Cantine {
         }
     }
 
-    public boolean creerMenu(String entree, String repas, String dessert) {
+    public boolean creerMenu( String entree, String repas, String dessert) {
         if (!plats.contains(GetPlatByName(entree)) || !plats.contains(GetPlatByName(repas)) || !plats.contains(GetPlatByName(dessert))) {
-            System.out.println(" Il manque un repas dans la liste de plats");
+            System.out.println(" Un ou plusieurs de ces plats n'existent pas ");
             return false;
         } else { 
-            return menus.add(new Menu(this.GetPlatByName(entree), this.GetPlatByName(repas), this.GetPlatByName(dessert)));
+            return menus.add(new Menu(GetPlatByName(entree), GetPlatByName(repas), GetPlatByName(dessert)));}
         }
         
+       
+        
+    public void afficheMenus(){
+            int j;
+        for(int i = 0; i<menus.size() ;i++){
+            j=i+1;
+            System.out.println("Menu" + " " + j + " "+ ":");
+            System.out.println(menus.get(i).entree.nomPlat);
+            System.out.println(menus.get(i).repas.nomPlat);
+            System.out.println(menus.get(i).dessert.nomPlat);
+            }
+        }
 
-    //}
+
+    
+    
+    
+    //}     
 
   
 

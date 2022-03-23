@@ -4,21 +4,17 @@ package model;
 
 public class Menu {
 
-    private Session session;
-    private Plat entree;
-    private Plat repas;
-    private Plat dessert;
+     Plat entree;
+     Plat repas;
+     Plat dessert;
 
-    public Menu(Plat e, Plat r, Plat d){
+    public Menu( Plat e, Plat r, Plat d){
         this.entree = e;
         this.repas = r;
         this.dessert = d;
 
     }
-    
-    public Menu(String entree2, String repas2, String dessert2) {
-    }
-
+ 
     public Plat GetEntree(){
         return this.entree;
     }
@@ -62,13 +58,13 @@ public class Menu {
         
     }
 
-    public boolean addSession(Session session){
+   /* public boolean addSession(Session session){
         if (this.session == session) {
             return false;
         } else {
             this.session = session;
             return true;
         }
-    }
+    }*/
     
 }

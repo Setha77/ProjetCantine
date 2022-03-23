@@ -11,9 +11,9 @@ public class Parent extends Personne {
 		super(n, p, s, d);
 	}
 
-    public boolean ajouterE(Parent p1, Parent p2, String n, String p, String s, String d){
+    public boolean ajouterE(Parent p, Parent m, String n, String pr, String s, String d){
 		
-		Enfant e = new Enfant(p1, p2, n, p, s, d);
+		Enfant e = new Enfant(p, m, n, pr, s, d);
 		
 		if (!this.enfants.contains(e)) {
 			return this.enfants.add(e);

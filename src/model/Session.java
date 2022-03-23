@@ -5,23 +5,34 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 public class Session {
-    Date date;
-    Time heure;
+    String date;
+    String heure;
     int nbrPlace;
-    ArrayList<Menu> listeMenu;
-    ArrayList<Enfant> listeEnfants;
+    Menu menunormal;
+    Menu menuveg;
+    ArrayList<Enfant> listeEnfants = new ArrayList<Enfant>();
 
-    public Session(Date date, Time heure, int nbrPlace) {
+    public Session(String date, String heure, int nbrPlace, Menu mn, Menu mv) {
         this.date = date;
         this.heure = heure;
         this.nbrPlace = nbrPlace;
+        this.menunormal = mn;
+        this.menuveg = mv;
     }
 
-    public Date getdDate() {
+    public Menu GetMenunormal(){
+        return this.menunormal;
+    }
+
+    public Menu GetMenuveg(){
+        return this.menuveg;
+    }
+    
+    public String getdDate() {
         return date;
     }
 
-    public Time getHeure() {
+    public String getHeure() {
         return heure;
     }
 
@@ -29,20 +40,16 @@ public class Session {
         return nbrPlace;
     }
 
-    public Date setDat(Date d) {
+    public String setDat(String d) {
         return date = d;
     }
 
-    public Time setHeure(Time t) {
+    public String setHeure(String t) {
         return heure = t;
     }
 
     public int setNbrPlace(int p) {
         return nbrPlace = p;
-    }
-
-    public void ajouteMenu(Menu m){
-        this.listeMenu.add(m);
     }
 
     public boolean ajouteEnfant(Enfant e){

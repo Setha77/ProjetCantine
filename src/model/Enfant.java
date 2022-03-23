@@ -1,25 +1,29 @@
 package model;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Enfant extends Personne {
 
-    Parent parent1, parent2;
-     
-
-    ArrayList<Parent> Parents = new ArrayList<Parent>();/* pourquoi utiliser ArrayList pour stocker
-                                                           les parents de l'enfant alors qu'on utilise deux variables parents ?*/
-  
-    public Enfant(Parent p1, Parent p2, String n, String p, String s,String d) {
-		super(n, p, s, d);
-        this.parent1 = p1;
-        this.parent2 = p2;
+    Parent pere, mere; 
+  // homophobe
+    public Enfant(Parent p, Parent m, String n, String pr , String s,String d) {
+		super(n, pr, s, d);
+        this.pere = p; 
+        this.mere = m;
 	}
 
 
-
+    
+    
     public boolean ajouterP(Parent p){
-        if (!(this.Parents.contains(p))) {
-            return Parents.add(p);
+        if (p!=this.pere||p!=this.mere) {
+            if(p.sexe=="homme"){
+            this.pere=p;
+            return true;
+            }
+            else{
+            this.mere=p;
+            return true;
+            }       
         } else {
             return false;
         }

@@ -1,24 +1,26 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import controller.controller;
+//import controller.controller;
 
 public class Frame extends JFrame
 
 {
-    private Panel basePanel;
+    //private Panel basePanel;
 
-    public Frame(controller baseController)
+    public Frame(String titre)
     {
-        basePanel = new Panel(baseController);
+        super("Gestion de cuisine");
         setupFrame();
     }
 
     private void setupFrame()
     {
-        this.setContentPane(basePanel);
         this.setSize(500, 500);
+        this.setLocationRelativeTo(null);
+        JPanel contentPane =  (JPanel) this.getComponentPane();
         this.setVisible(true);
     }
 }

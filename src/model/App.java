@@ -6,7 +6,7 @@ public class App {
     public static void main (String[] args){
 
         Cantine c = new Cantine();
-        
+       
         c.creerAlimentveg("oignon","aucun");
         c.creerAlimentveg("carotte","aucun");
         c.creerAlimentveg("tomate","aucun");
@@ -111,7 +111,6 @@ public class App {
 
         c.creerPlatvege("Moëlleux au chocolat", "dessert");
         c.addComposant("Moëlleux au chocolat", "chocolat");
-        c.addComposant("Moëlleux au chocolat", "farine");
         c.addComposant("Moëlleux au chocolat", "oeuf");
         c.addComposant("Moëlleux au chocolat", "farine");
         c.addComposant("Moëlleux au chocolat", "sucre");
@@ -136,19 +135,27 @@ public class App {
 
         c.creerMenu("Celeri remoulade", "Boeuf Bourguignon", "Compote de pomme");
         
+        c.afficheMenus();
+        // Ajouter  Parent 
+
+
+
      
-     for (int i = 0 ; i<c.menus.size(); i++){
+     /*for (int i = 0 ; i<c.menus.size(); i++){
             System.out.println(c.menus.get(i).GetEntree());
         }
      
-       /* for(int i=0; i<c.plats.size();i++){
+          for(int i=0; i<c.plats.size();i++){
             System.out.println(c.plats.get(i).nomPlat);
         }
-       for(int i=0; i<c.plats.size();i++){
+
+        */
+      /* for(int i=0; i<c.plats.size();i++){
             System.out.println(c.plats.get(i).nomPlat + " : ");
             for(int j=0;j<c.plats.get(i).composants.size();j++){
                  System.out.println(c.plats.get(i).composants.get(j).nomAlim);
             }
-       }*/
+       }
+       */
     }
 }
