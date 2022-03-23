@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 public class Cantine {
 
+
+    //Listes 
+
+
+
     ArrayList<Menu> menus = new ArrayList<Menu>();
 
     ArrayList<Aliments> aliments = new ArrayList<Aliments>();
@@ -12,19 +17,16 @@ public class Cantine {
 
     ArrayList<Platvege> platsvege = new ArrayList<Platvege>();
     ArrayList<Plat> plats = new ArrayList<Plat>();
-    ArrayList<Session> ses
+    ArrayList<Session> sessions = new ArrayList<Session>();
 
-    Administrateur admin;
 
-    public Cantine(Administrateur a){
-        this.admin = a;
-    }
 
-    // méthodes
 
-    public boolean creerSession(String date, String heure, int nbrPlace, Menu mn, Menu mv){
-		sessions.add()
-	}
+   
+    // méthodes de recherche d'objets:
+
+
+
 
 
     public Aliments GetAlimentByName(String nom) {
@@ -70,7 +72,14 @@ public class Cantine {
 
 
 
-    public boolean creerAlimentveg(String n, String allergene) { // C'est pas mieux de déplacer cette méthode dans administrateur ? C'est plutôt lui qui va créer les aliments et non la cantine
+
+
+    //Fonctions des Aliments
+
+
+
+
+    public boolean creerAlimentveg(String n, String allergene) { 
 
         if (alimentsveg.contains(GetAlimentByName(n))) {
             System.out.println("Il est deja dans la liste");
@@ -91,6 +100,14 @@ public class Cantine {
         aliments.add(new Alimentsnormaux(n, allergene));
         return true;
     }
+
+
+
+
+    //Fonctions des Plats
+
+
+
 
     public boolean creerPlatvege(String n, String t) {
         if (platsvege.contains(GetPlatByName(n))) {
@@ -129,6 +146,14 @@ public class Cantine {
         }
     }
 
+
+
+
+    //Fonction des Menus
+
+
+
+
     public boolean creerMenu( String entree, String repas, String dessert) {
         if (!plats.contains(GetPlatByName(entree)) || !plats.contains(GetPlatByName(repas)) || !plats.contains(GetPlatByName(dessert))) {
             System.out.println(" Un ou plusieurs de ces plats n'existent pas ");
@@ -151,10 +176,36 @@ public class Cantine {
         }
 
 
+
+    //Fonctions des Sessions 
+
+
+
+    public boolean creerSession(String date, String heure, int nbrPlace, Menu mn, Menu mv){
+    Session s=new Session(date, heure, nbrPlace, mn, mv);
+    if (!sessions.contains(s)){
+		sessions.add(new Session(date, heure, nbrPlace, mn, mv));
+        return true;
+        }
+    else{
+        return false;
+        }
+
+	}
+
+    public boolean supprimerSession(String d, String h){
+        for(int i = 0; i<sessions.size(); i++){
+            if(sessions.get(i).date==d && sessions.get(i).heure==h){
+                sessions.remove(sessions.get(i));
+                return true;
+            }
+        }
+        return false;
+    }
     
     
     
-    //}     
+    //C'est quoi ça ????
 
   
 

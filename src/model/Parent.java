@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class Parent extends Personne {
 
 	ArrayList<Enfant> enfants = new ArrayList<Enfant>();
+	String motdepasse;
 
-
-	public Parent(String n, String p, String s, String d) {
+	public Parent(String n, String p, String s, String d, String mdp) {
 		super(n, p, s, d);
+		this.motdepasse=mdp;
 	}
 
     public boolean ajouterE(Parent p, Parent m, String n, String pr, String s, String d){
@@ -31,8 +32,26 @@ public class Parent extends Personne {
 		}
 	}
 
-    public void inscrire(){
-
+    public boolean inscrire(Session s, Enfant e){
+		if(!s.listeEnfants.contains(e) && s.listeEnfants.size()<s.nbrPlace && this.enfants.contains(e)){
+			s.listeEnfants.add(e);
+			return true;
+		}
+		else{
+			if(s.listeEnfants.contains(e)){
+				System.out.println("Cet enfant est déja inscris pour cette session");
+				return false;
+			}
+			if(s.listeEnfants.size()==s.nbrPlace){
+				System.out.println("Malheureusement, il n'y a plus de place pour cette session");
+				return false;
+			}
+			if(!this.enfants.contains(e)){
+				System.out.println("Cet enfant n'est pas trouvable dans vos enfants");
+				return false;
+			}
+		}
+		return false;
     }
 
 	public void choisirSession(){
