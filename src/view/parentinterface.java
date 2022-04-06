@@ -3,13 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+
 import view.enfantsparent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author 33781
  */
 public class parentinterface extends javax.swing.JFrame {
-    static parentinterface e = new logi();
+     
     /**
      * Creates new form parentinterface
      */
@@ -32,7 +35,14 @@ public class parentinterface extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dispose();
+                Sessionsparent s = new Sessionsparent();
+                s.main();
 
+            }
+        });
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 153));
@@ -42,7 +52,7 @@ public class parentinterface extends javax.swing.JFrame {
         jButton3.setText("Enfants");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+                dispose();
                 enfantsparent e = new enfantsparent();
                 e.main();
 
@@ -137,10 +147,6 @@ public class parentinterface extends javax.swing.JFrame {
                 new parentinterface().setVisible(true);
             }
         });
-    }
-
-    public static void fermer(){
-       .setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

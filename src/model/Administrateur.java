@@ -3,9 +3,14 @@ package model;
 //import java.util.ArrayList;
 
 public class Administrateur extends Personne {
+
+	int login;
+	String motdepasse;
 	
-	public Administrateur(String n, String p, String s, String d) {
+	public Administrateur(String n, String p, String s, String d, int l, String mdp) {
 		super(n, p, s, d);
+		this.login = l;
+		this.motdepasse = mdp;
 	}
 
 

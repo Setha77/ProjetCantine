@@ -13,9 +13,6 @@ public Aliments (String nomAlim, String allergene){
     this.allergene = allergene;
 }
 
-public enum AlimType {  
-    FRUIT, LEGUME, VIANDE , POISSON , FRUITDEMER, PRODUITLAITIER , FECULENT
-}
 
 public String getNomAlim(){
     return nomAlim;

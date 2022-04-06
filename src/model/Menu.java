@@ -1,12 +1,15 @@
 package model;
 
+import java.util.ArrayList;
+
 //import java.util.ArrayList;
 
 public class Menu {
 
-     Plat entree;
-     Plat repas;
-     Plat dessert;
+    Plat entree;
+    Plat repas;
+    Plat dessert;
+    ArrayList<String> listeAllergenes = new ArrayList<String>();
 
     public Menu( Plat e, Plat r, Plat d){
         this.entree = e;
@@ -56,6 +59,26 @@ public class Menu {
             return true;
         }
         
+    }
+
+    public void getAllergenes(){
+        for(int i = 0; i < this.entree.composants.size() ; i++){
+            if(this.entree.composants.get(i).allergene!="aucun"){
+                listeAllergenes.add(entree.composants.get(i).allergene);           
+            }
+        }
+        for(int i = 0; i < this.repas.composants.size() ; i++){
+            if(this.repas.composants.get(i).allergene!="aucun"){
+                listeAllergenes.add(this.repas.composants.get(i).allergene);           
+            }
+        }
+        for(int i = 0; i < this.dessert.composants.size() ; i++){
+            if(this.dessert.composants.get(i).allergene!="aucun"){
+                listeAllergenes.add(this.dessert.composants.get(i).allergene);           
+            }
+        }
+        
+
     }
 
    /* public boolean addSession(Session session){

@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Parent extends Personne {
 
 	ArrayList<Enfant> enfants = new ArrayList<Enfant>();
+	String login;
 	String motdepasse;
-
-	public Parent(String n, String p, String s, String d, String mdp) {
+	int PARENT_ID;
+	public Parent(String n, String p, String s, String d, String l, String mdp) {
 		super(n, p, s, d);
+		this.login=l;
 		this.motdepasse=mdp;
 	}
 
