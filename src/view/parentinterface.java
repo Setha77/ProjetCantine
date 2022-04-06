@@ -9,7 +9,7 @@ import view.enfantsparent;
  * @author 33781
  */
 public class parentinterface extends javax.swing.JFrame {
-
+    static parentinterface e = new logi();
     /**
      * Creates new form parentinterface
      */
