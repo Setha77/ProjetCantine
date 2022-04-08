@@ -4,6 +4,7 @@
  */
 package view;
 import controller.ConEnfant;
+import controller.ConSuppEnfant;
 /**
  *
  * @author 33781
@@ -21,7 +22,8 @@ public class infoenfant extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private ConEnfant conE = new ConEnfant(jTextField2);
+    private ConEnfant conE = new ConEnfant(jTextField1,jTextField2);
+   
     /**
      * Creates new form infoenfant
      */
@@ -69,7 +71,7 @@ public class infoenfant extends javax.swing.JFrame {
         });
 
         jButton1.setText("Ajouter");
-        jButton1.addActionListener(new ConEnfant (jTextField2));
+        jButton1.addActionListener(new ConEnfant (jTextField1,jTextField2));
         jButton2.setText("RETOUR");
 
         jButton2.addActionListener(new java.awt.event.ActionListener() {

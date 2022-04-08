@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,13 +15,13 @@ import javax.swing.table.DefaultTableModel;
  * @author 33781
  */
 public class admininterface extends javax.swing.JFrame {
-    static admininterface ad = new admininterface();
+   static admininterface ad = new admininterface();
     /**
      * Creates new form admininterface
      */
     public admininterface() {
         initComponents();
-        ShowDatabase();
+     
     }
 
     /**
@@ -64,10 +62,8 @@ public class admininterface extends javax.swing.JFrame {
 
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dispose();
-                Ajouteradmin e = new Ajouteradmin();
-                e.main();
-
+           
+                
             }
         });
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,6 +94,16 @@ public class admininterface extends javax.swing.JFrame {
         jButton1.setText("Ajouter");
 
         jButton2.setText("Supprimer");
+
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dispose();
+                Ajouteradmin a = new Ajouteradmin();
+                a.main();
+            }
+        });
+
+
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("ADMINISTRATION SESSIONS");

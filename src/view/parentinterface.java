@@ -7,12 +7,14 @@ package view;
 import view.enfantsparent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import controller.ConSuppEnfant;
 /**
  *
  * @author 33781
  */
 public class parentinterface extends javax.swing.JFrame {
-     
+      
     /**
      * Creates new form parentinterface
      */
@@ -35,6 +37,13 @@ public class parentinterface extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 102, 153));
+
+        jButton1.setText("Sessions");
+
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dispose();
@@ -43,11 +52,6 @@ public class parentinterface extends javax.swing.JFrame {
 
             }
         });
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(255, 102, 153));
-
-        jButton1.setText("Sessions");
 
         jButton3.setText("Enfants");
         jButton3.addActionListener(new java.awt.event.ActionListener() {

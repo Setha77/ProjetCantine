@@ -13,43 +13,38 @@ import view.parentinterface;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 import model.Administrateur;
 
-public class ConEnfant implements ActionListener {
+public class ConSuppEnfant implements ActionListener {
 
     JTextField idEnfant;
     JTextField idParent;
+    JTable j ;
     String add;
 
-    public ConEnfant(JTextField idEnfant,JTextField idParent) {
-        this.idEnfant = idEnfant;
-        this.idParent = idParent;
+    public ConSuppEnfant(JTable j ) {
+    
+   this.j = j;
 
     }
 
             public void actionPerformed(ActionEvent e ){
                 try{
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
-            String sql = "Select PARENT_ID from PARENT where LOGIN=? ";
-            PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1,login.Id);   
-            ResultSet rs = pst.executeQuery();
-        
-               if (rs.next()){
-        
-                String sql2 ="INSERT INTO cantineV2.PARENT_has_ENFANT (PARENT_PARENT_ID, ENFANT_idENFANT) VALUES ("+idParent.getText()+","+idEnfant.getText()+")"; 
+                int row = j.getSelectedRow();
+                String cell = j.getModel().getValueAt(row, 0).toString();
+                String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE (ENFANT_idENFANT = "+cell+") and (PARENT_PARENT_ID= ?)"; 
                 PreparedStatement pst2 = con.prepareStatement(sql2);
-                //pst2.setString(2,idEnfant.getText());  
-			   // pst2.setString(1,idParent.getText());
-                //ResultSet rs2= pst2.executeUpdate();
+                pst2.setString(1,login.Id); 
                 pst2.executeUpdate(sql2);
-                JOptionPane.showMessageDialog(null, "Votre enfant à été ajouté ...");
+                JOptionPane.showMessageDialog(null, "Votre enfant à été Supprimé ...");
               
                 
-            }
+            
             con.close();
                 }
             

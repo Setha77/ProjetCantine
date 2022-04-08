@@ -6,7 +6,7 @@ package view;
 import java.awt.event.ActionEvent;
 import controller.Con;
 import controller.ConAdmin;
-import model.ConnectDB;
+
 /**
  *
  * @author 33781
