@@ -37,9 +37,9 @@ public class ConSuppEnfant implements ActionListener {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
                 int row = j.getSelectedRow();
                 String cell = j.getModel().getValueAt(row, 0).toString();
-                String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE (ENFANT_idENFANT = "+cell+") and (PARENT_PARENT_ID= ?)"; 
+                String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE (ENFANT_idENFANT = "+cell+") "; 
                 PreparedStatement pst2 = con.prepareStatement(sql2);
-                pst2.setString(1,login.Id); 
+              //  pst2.setString(1,cell); 
                 pst2.executeUpdate(sql2);
                 JOptionPane.showMessageDialog(null, "Votre enfant à été Supprimé ...");
               

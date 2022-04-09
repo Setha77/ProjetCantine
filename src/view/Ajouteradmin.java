@@ -5,6 +5,7 @@
 package view;
 
 import controller.ConSession;
+import controller.afficherMenu;
 
 /**
  *
@@ -25,7 +26,7 @@ public class Ajouteradmin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        afficherMenu af = new afficherMenu();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -76,11 +77,12 @@ public class Ajouteradmin extends javax.swing.JFrame {
 
         jList1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Menu1", "Menu2", "Menu3", "Menu4", "Menu5" };
+            String[] strings = af.Menu();
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(jList1);
+
 
         jList2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jList2.setModel(new javax.swing.AbstractListModel<String>() {

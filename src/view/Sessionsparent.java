@@ -4,6 +4,17 @@
  */
 package view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import controller.ReserverSession;
 import view.parentinterface;
 /**
  *
@@ -11,12 +22,21 @@ import view.parentinterface;
  */
 public class Sessionsparent extends javax.swing.JFrame {
     static  Sessionsparent s1 = new Sessionsparent();
+     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private ReserverSession rss = new ReserverSession(jTable1, jTextField1);
     
     /**
      * Creates new form Sessionsparent
      */
     public Sessionsparent() {
         initComponents();
+        ShowTable();
     }
 
     /**
@@ -28,11 +48,15 @@ public class Sessionsparent extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+       jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+     
         jButton2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,18 +64,18 @@ public class Sessionsparent extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"date 1", "heure1", "entree1 repas1 dessert1", "entreeveg1 repasveg1 dessertveg1",  new Integer(30)},
-                {"date 2 ", "heure2", "entree2 repas2 dessert2", "entreeveg2 repasveg2 dessertveg2",  new Integer(30)},
-                {"date 3", "heure3", "entree3 repas3 dessert3", "entreeveg3 repasveg3 dessertveg3",  new Integer(30)},
-                {"date 4 ", "heure4", "entree4 repas4 dessert4", "entreeveg4 repasveg4 dessertveg4",  new Integer(30)},
-                {"date 5 ", "heure5", "entree5 repas5 dessert5", "entreeveg5 repasveg5 dessertveg5",  new Integer(30)}
+                {new Integer(1),"date 1", "heure1", "entree1 repas1 dessert1", "entreeveg1 repasveg1 dessertveg1","entreeveg1 repasveg1 dessertveg1",  new Integer(30)},
+                {new Integer(2),"date 2 ", "heure2", "entree2 repas2 dessert2", "entreeveg2 repasveg2 dessertveg2","entreeveg1 repasveg1 dessertveg1",  new Integer(30)},
+                {new Integer(3),"date 3", "heure3", "entree3 repas3 dessert3", "entreeveg3 repasveg3 dessertveg3","entreeveg1 repasveg1 dessertveg1",  new Integer(30)},
+                {new Integer(4),"date 4 ", "heure4", "entree4 repas4 dessert4", "entreeveg4 repasveg4 dessertveg4","entreeveg1 repasveg1 dessertveg1",  new Integer(30)},
+                {new Integer(5),"date 5 ", "heure5", "entree5 repas5 dessert5", "entreeveg5 repasveg5 dessertveg5","entreeveg1 repasveg1 dessertveg1",  new Integer(30)}
             },
             new String [] {
-                "Date", "Heure", "Menu", "Menu Veg", "Nb places"
+                "Id Session","Date", "Heure", "Entree", "Repas","Dessert", "Nb places"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -62,9 +86,32 @@ public class Sessionsparent extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Reserver");
+            jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try{
+           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+                int row = jTable1.getSelectedRow();
+                String a = jTextField1.getText();
+                String cell = jTable1.getModel().getValueAt(row, 0).toString();
+                String sql2 ="INSERT INTO  cantineV2.SESSION_has_ENFANT(ENFANT_idENFANT,idSESSION) VALUES("+a+","+cell+")"; 
+                PreparedStatement pst2 = con.prepareStatement(sql2);
+              //  pst2.setString(1,cell); 
+                pst2.execute(sql2);
+                JOptionPane.showMessageDialog(null, "Votre enfant à été Inscrit à la Session" +cell+ " ... ");
+              
+                
+            
+            con.close();
+                }
+            
+            catch(Exception ez){
+                JOptionPane.showMessageDialog(null, ez);
 
+            }
+            }
+        });
 
-
+    jLabel1.setText("ID ENFANT");
 
 
 
@@ -85,19 +132,25 @@ public class Sessionsparent extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jButton2)
+                .addGap(29, 29, 29)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(254, 254, 254)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(37, 37, 37))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(79, 79, 79)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -158,11 +211,33 @@ public class Sessionsparent extends javax.swing.JFrame {
        s1.setVisible(false);
     }
 
+public void ShowTable() {
+        String add2;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+            String sql = "SELECT * FROM cantineV2.SESSION";
+            //String sql3 = "SELECT * FROM cantineV2.SESSION where idSESSION =? ";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            String sql2 = "SELECT * FROM cantineV2.MENU";
+            PreparedStatement pst2 = con.prepareStatement(sql2);
+            ResultSet rs2 = pst2.executeQuery();
+            DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
+            tm.setRowCount(0);
+            while (rs.next() & rs2.next()) {
+                Object o[] = { rs.getInt("idSESSION"),rs.getString("JOUR_RESERVATION"),rs.getString("HEURE"),rs2.getString("ENTREE"),rs2.getString("REPAS"),rs2.getString("DESSERT"),rs.getInt("NOMBRE_PLACE") };
+                tm.addRow(o);
+            }
+            con.close();
+
+        } catch (Exception ez) {
+            // TODO Auto-generated catch block
+            ez.printStackTrace();
+        }
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    
     // End of variables declaration//GEN-END:variables
 }

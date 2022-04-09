@@ -90,13 +90,13 @@ public class enfantsparent extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                   try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
                 int row = jTable1.getSelectedRow();
-                String cell = jTable1.getModel().getValueAt(row, 0).toString();
-                String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE (PARENT_PARENT_ID = "+login.Id+") and (ENFANT_idENFANT = "+cell+") "; 
+                String cell = jTable1.getModel().getValueAt(row, 1).toString();
+                String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE ENFANT_idENFANT = "+cell; 
                 PreparedStatement pst2 = con.prepareStatement(sql2);
-                //pst2.setString(1,login.Id); 
-                pst2.executeUpdate(sql2);
+              //  pst2.setString(1,cell); 
+                pst2.execute(sql2);
                 JOptionPane.showMessageDialog(null, "Votre enfant à été Supprimé ...");
               
                 
