@@ -36,15 +36,16 @@ public class afficherMenu  {
             int i;
             Class.forName("com.mysql.jdbc.Driver");
             Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root", "110401Sultan77");
-            /*String sql = "SELECT COUNT(*) AS total FROM MENU";
+           /* String sql = "SELECT COUNT(*) AS total FROM MENU";
             PreparedStatement pst = con2.prepareStatement(sql);
                     
             ResultSet rs = pst.executeQuery();
-            int total = rs.getInt("total");*/
-            String[] strings= new String[2];
+            int total = rs.getInt("total");
+            */
+            String[] strings= new String[21];
+           
             
-            
-            for(i=1;i<=1;i++){
+            for(i=1;i<=20;i++){
 
                             
                 String sql2 = "SELECT * FROM MENU WHERE idMENU = ?";
@@ -61,7 +62,7 @@ public class afficherMenu  {
                                     
                                     
                     }   
-            }
+                }
             
             
         

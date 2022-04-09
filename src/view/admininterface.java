@@ -21,6 +21,7 @@ public class admininterface extends javax.swing.JFrame {
      */
     public admininterface() {
         initComponents();
+        ShowTable();
      
     }
 
@@ -85,7 +86,7 @@ public class admininterface extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Date", "Heure", "Nombre de places", "Menu 1 ", "Menu 2"
+                "Id Session","Date", "Heure",  "Menu Normal","Menu Veg","Nombre de places"
             }
         ));
         jTable1.setRowHeight(50);
@@ -94,6 +95,34 @@ public class admininterface extends javax.swing.JFrame {
         jButton1.setText("Ajouter");
 
         jButton2.setText("Supprimer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 try{
+           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+                int row = jTable1.getSelectedRow();
+                String cell = jTable1.getModel().getValueAt(row, 0).toString();
+                String sql2 ="DELETE FROM cantineV2.SESSION WHERE idSESSION = "+cell; 
+                String sql ="DELETE FROM cantineV2.SESSION_has_ENFANT WHERE idSESSION = "+cell; 
+                PreparedStatement pst2 = con.prepareStatement(sql2);
+                PreparedStatement pst = con.prepareStatement(sql);
+              //  pst2.setString(1,cell); 
+                pst.execute(sql);
+                
+                
+                JOptionPane.showMessageDialog(null, "La Session " +cell+ " a été suprimée...");
+                pst2.execute(sql2);
+                ShowTable();
+                
+            
+            con.close();
+                }
+            
+            catch(Exception ez){
+                JOptionPane.showMessageDialog(null, ez);
+
+            }
+            }
+        });
 
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +138,15 @@ public class admininterface extends javax.swing.JFrame {
         jLabel2.setText("ADMINISTRATION SESSIONS");
 
         jButton3.setText("Liste enfant");
+
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    dispose();
+                    listeEnfants l = new listeEnfants();
+                    l.main();
+                
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,6 +228,31 @@ public class admininterface extends javax.swing.JFrame {
                 ad.setVisible(true);
             }
         });
+    }
+    public void ShowTable(){
+
+         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+            String sql = "SELECT * FROM cantineV2.SESSION";
+            //String sql3 = "SELECT * FROM cantineV2.SESSION where idSESSION =? ";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            String sql2 = "SELECT * FROM cantineV2.MENU";
+            PreparedStatement pst2 = con.prepareStatement(sql2);
+            ResultSet rs2 = pst2.executeQuery();
+            DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
+            tm.setRowCount(0);
+            while(rs.next() ){
+                Object o[] = { rs.getInt("idSESSION"),rs.getString("JOUR_RESERVATION"),rs.getString("HEURE"),rs.getInt("Menu_normal"),rs.getInt("Menu_veg"),rs.getInt("NOMBRE_PLACE") };
+                tm.addRow(o);
+            }
+            con.close();
+
+        } catch (Exception ez) {
+            // TODO Auto-generated catch block
+            ez.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
