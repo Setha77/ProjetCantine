@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 
 import javax.swing.table.DefaultTableModel;
 
+import controller.config;
+
 public class listeEnfants extends javax.swing.JFrame {
 
     /**
@@ -162,7 +164,7 @@ public void ShowTable() {
    
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+            Connection con = DriverManager.getConnection(config.url, config.user, config.password);
             String sql2 = "SELECT * FROM cantineV2.SESSION_has_ENFANT";
             PreparedStatement pst2 = con.prepareStatement(sql2);
             ResultSet rs2 = pst2.executeQuery();

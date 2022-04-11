@@ -17,6 +17,7 @@ import com.mysql.cj.xdevapi.PreparableStatement;
 
 import controller.ConEnfant;
 import controller.ConSuppEnfant;
+import controller.config;
 
 /**
  *
@@ -61,7 +62,7 @@ public class enfantsparent extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][] {
-                        { "nom1", "prenom1", "new Integer(1)", "sexe1" },
+                        { "nom1", "prenom1"},
                         { null, null, null, null },
                         { null, null, null, null },
                         { null, null, null, null },
@@ -73,7 +74,7 @@ public class enfantsparent extends javax.swing.JFrame {
                         { null, null, null, null }
                 },
                 new String[] {
-                        "ID Parent", "ID Enfant", "Nom Enfant", "Prenom Enfant"
+                        "ID Parent", "ID Enfant"
                 }) {
             Class[] types = new Class[] {
                     java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
@@ -90,24 +91,24 @@ public class enfantsparent extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                   try{
-           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
-                int row = jTable1.getSelectedRow();
-                String cell = jTable1.getModel().getValueAt(row, 1).toString();
-                String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE ENFANT_idENFANT = "+cell; 
-                PreparedStatement pst2 = con.prepareStatement(sql2);
-              //  pst2.setString(1,cell); 
-                pst2.execute(sql2);
-                JOptionPane.showMessageDialog(null, "Votre enfant à été Supprimé ...");
-              
+                    Connection con = DriverManager.getConnection(config.url, config.user, config.password);
+                    int row = jTable1.getSelectedRow();
+                    String cell = jTable1.getModel().getValueAt(row, 1).toString();
+                    String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE ENFANT_idENFANT = "+cell; 
+                    PreparedStatement pst2 = con.prepareStatement(sql2);
+                    //  pst2.setString(1,cell); 
+                    pst2.execute(sql2);
+                    JOptionPane.showMessageDialog(null, "Votre enfant à été Supprimé ...");
+                
                 
             
-            con.close();
+                    con.close();
                 }
             
-            catch(Exception ez){
-                JOptionPane.showMessageDialog(null, ez);
+                catch(Exception ez){
+                    JOptionPane.showMessageDialog(null, ez);
 
-            }
+                }
         
             }
         });
@@ -243,10 +244,8 @@ public class enfantsparent extends javax.swing.JFrame {
         String add2;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root",
-                    "110401Sultan77");
-            Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root",
-                    "110401Sultan77");
+            Connection con = DriverManager.getConnection(config.url, config.user, config.password);
+            Connection con2 = DriverManager.getConnection(config.url, config.user, config.password);
             String sql2 = "Select PARENT_ID from PARENT where LOGIN=? ";
             PreparedStatement pst2 = con2.prepareStatement(sql2);
             pst2.setString(1, login.Id);
@@ -260,14 +259,15 @@ public class enfantsparent extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
             tm.setRowCount(0);
-            while (rs.next()) {
-                Object o[] = { rs.getInt("PARENT_PARENT_ID"),rs.getInt("ENFANT_idENFANT"),rs.getString("Nom"),rs.getString("Prenom") };
-                tm.addRow(o);
-            }
+                while (rs.next()) {
+                    Object o[] = { rs.getInt("PARENT_PARENT_ID"),rs.getInt("ENFANT_idENFANT")};
+                    tm.addRow(o);
+                }
             con2.close();
             con.close();
             }
-        } catch (Exception ez) {
+        } 
+        catch (Exception ez) {
             // TODO Auto-generated catch block
             ez.printStackTrace();
         }
@@ -282,6 +282,6 @@ public class enfantsparent extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-        private ConSuppEnfant conS = new ConSuppEnfant(jTable1);
+    private ConSuppEnfant conS = new ConSuppEnfant(jTable1);
     // End of variables declaration//GEN-END:variables
 }

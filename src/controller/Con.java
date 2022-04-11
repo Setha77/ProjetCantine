@@ -28,10 +28,10 @@ JTextField jTextFieldx;
 JTextComponent jPasswordFieldx;
 
 
-public Con (JTextField jTextFieldx,JTextComponent jPasswordFieldx){
-    this.jPasswordFieldx=jPasswordFieldx;
-    this.jTextFieldx=jTextFieldx;
-}
+    public Con (JTextField jTextFieldx,JTextComponent jPasswordFieldx){
+        this.jPasswordFieldx=jPasswordFieldx;
+        this.jTextFieldx=jTextFieldx;
+    }
 
     public void actionPerformed(ActionEvent e ){
       
@@ -39,7 +39,7 @@ public Con (JTextField jTextFieldx,JTextComponent jPasswordFieldx){
          
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+            Connection con = DriverManager.getConnection(config.url, config.user, config.password);
             String sql = "Select * from PARENT where LOGIN=? and  MOT_PASSE =?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1,jTextFieldx.getText());  
@@ -65,16 +65,7 @@ public Con (JTextField jTextFieldx,JTextComponent jPasswordFieldx){
             JOptionPane.showMessageDialog(null, ez);
 
         }
-    
-    
-
         
     }
-
-
-
-
-	
-
     
 }

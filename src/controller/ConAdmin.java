@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import view.AccueilAdmin;
+
 import view.admininterface;
 import view.login;
 import view.parentinterface;
@@ -31,10 +31,10 @@ JTextComponent jPasswordFieldx;
 boolean x  = false;
 boolean y = false;;
 
-public ConAdmin (JTextField jTextFieldx,JTextComponent jPasswordFieldx){
-    this.jPasswordFieldx=jPasswordFieldx;
-    this.jTextFieldx=jTextFieldx;
-}
+    public ConAdmin (JTextField jTextFieldx,JTextComponent jPasswordFieldx){
+        this.jPasswordFieldx=jPasswordFieldx;
+        this.jTextFieldx=jTextFieldx;
+    }
 
     public void actionPerformed(ActionEvent e ){
       
@@ -42,7 +42,7 @@ public ConAdmin (JTextField jTextFieldx,JTextComponent jPasswordFieldx){
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+            Connection con = DriverManager.getConnection(config.url, config.user, config.password);
             String sql = "Select * from ADMINISTRATEUR where LOGIN=? and  MOT_PASSE =?";
             String sql2 ="Select * from PARENT where LOGIN=? and  MOT_PASSE =?"; 
             PreparedStatement pst = con.prepareStatement(sql);

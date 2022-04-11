@@ -67,7 +67,7 @@ public class infoenfant extends javax.swing.JFrame {
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
-            }
+            } 
         });
 
         jButton1.setText("Ajouter");
@@ -85,16 +85,15 @@ public class infoenfant extends javax.swing.JFrame {
 
 
 
-        jLabel1.setText("NOM");
+        jLabel1.setText("ID Parent");
 
-        jLabel2.setText("PRENOM");
+        jLabel2.setText("ID Enfant");
 
-        jLabel3.setText("DATE DE NAISSANCE");
+        jLabel3.setText("Nom Enfant");
 
-        jLabel4.setText("SEXE");
+        jLabel4.setText("Prenom Enfant");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel5.setText("ERREUR");
+        
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

@@ -28,35 +28,28 @@ public class ConSuppEnfant implements ActionListener {
 
     public ConSuppEnfant(JTable j ) {
     
-   this.j = j;
+    this.j = j;
 
     }
 
-            public void actionPerformed(ActionEvent e ){
-                try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
-                int row = j.getSelectedRow();
-                String cell = j.getModel().getValueAt(row, 0).toString();
-                String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE (ENFANT_idENFANT = "+cell+") "; 
-                PreparedStatement pst2 = con.prepareStatement(sql2);
-              //  pst2.setString(1,cell); 
-                pst2.executeUpdate(sql2);
-                JOptionPane.showMessageDialog(null, "Votre enfant à été Supprimé ...");
+    public void actionPerformed(ActionEvent e ){
+        try{
+            Connection con = DriverManager.getConnection(config.url, config.user, config.password);
+            int row = j.getSelectedRow();
+            String cell = j.getModel().getValueAt(row, 0).toString();
+            String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE (ENFANT_idENFANT = "+cell+") "; 
+            PreparedStatement pst2 = con.prepareStatement(sql2);
+            //pst2.setString(1,cell); 
+            pst2.executeUpdate(sql2);
+            JOptionPane.showMessageDialog(null, "Votre enfant à été Supprimé ...");
               
-                
-            
             con.close();
-                }
+
+            }
             
             catch(Exception ez){
                 JOptionPane.showMessageDialog(null, ez);
 
             }
-        
-    
-    
-
-        
     }
-
 }

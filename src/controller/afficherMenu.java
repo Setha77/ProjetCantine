@@ -24,8 +24,6 @@ import model.Administrateur;
 
 
 
-
-
 public class afficherMenu  {
 
 
@@ -35,8 +33,8 @@ public class afficherMenu  {
                     
             int i;
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root", "110401Sultan77");
-           /* String sql = "SELECT COUNT(*) AS total FROM MENU";
+            Connection con2 = DriverManager.getConnection(config.url, config.user, config.password);
+            /* String sql = "SELECT COUNT(*) AS total FROM MENU";
             PreparedStatement pst = con2.prepareStatement(sql);
                     
             ResultSet rs = pst.executeQuery();

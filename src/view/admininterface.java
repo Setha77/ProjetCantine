@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import controller.config;
+
 /**
  *
  * @author 33781
@@ -34,7 +36,7 @@ public class admininterface extends javax.swing.JFrame {
       private void ShowDatabase(){
         try{
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantine", "root","110401Sultan77");
+        Connection con = DriverManager.getConnection(config.url, config.user, config.password);
         PreparedStatement ps = con.prepareStatement("select * from SESSION");
         ResultSet rs = ps.executeQuery();
         DefaultTableModel tm = (DefaultTableModel)jTable1.getModel();
@@ -97,30 +99,30 @@ public class admininterface extends javax.swing.JFrame {
         jButton2.setText("Supprimer");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 try{
-           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
-                int row = jTable1.getSelectedRow();
-                String cell = jTable1.getModel().getValueAt(row, 0).toString();
-                String sql2 ="DELETE FROM cantineV2.SESSION WHERE idSESSION = "+cell; 
-                String sql ="DELETE FROM cantineV2.SESSION_has_ENFANT WHERE idSESSION = "+cell; 
-                PreparedStatement pst2 = con.prepareStatement(sql2);
-                PreparedStatement pst = con.prepareStatement(sql);
-              //  pst2.setString(1,cell); 
-                pst.execute(sql);
-                
-                
-                JOptionPane.showMessageDialog(null, "La Session " +cell+ " a été suprimée...");
-                pst2.execute(sql2);
-                ShowTable();
+                try{
+                    Connection con = DriverManager.getConnection(config.url, config.user, config.password);
+                    int row = jTable1.getSelectedRow();
+                    String cell = jTable1.getModel().getValueAt(row, 0).toString();
+                    String sql2 ="DELETE FROM cantineV2.SESSION WHERE idSESSION = "+cell; 
+                    String sql ="DELETE FROM cantineV2.SESSION_has_ENFANT WHERE idSESSION = "+cell; 
+                    PreparedStatement pst2 = con.prepareStatement(sql2);
+                    PreparedStatement pst = con.prepareStatement(sql);
+                //  pst2.setString(1,cell); 
+                    pst.execute(sql);
+                    
+                    
+                    JOptionPane.showMessageDialog(null, "La Session " +cell+ " a été suprimée...");
+                    pst2.execute(sql2);
+                    ShowTable();
                 
             
-            con.close();
+                    con.close();
                 }
             
-            catch(Exception ez){
-                JOptionPane.showMessageDialog(null, ez);
+                catch(Exception ez){
+                    JOptionPane.showMessageDialog(null, ez);
 
-            }
+                }
             }
         });
 
@@ -226,6 +228,7 @@ public class admininterface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 ad.setVisible(true);
+                ad.setResizable(false);
             }
         });
     }
@@ -233,7 +236,7 @@ public class admininterface extends javax.swing.JFrame {
 
          try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+            Connection con = DriverManager.getConnection(config.url, config.user, config.password);
             String sql = "SELECT * FROM cantineV2.SESSION";
             //String sql3 = "SELECT * FROM cantineV2.SESSION where idSESSION =? ";
             PreparedStatement pst = con.prepareStatement(sql);

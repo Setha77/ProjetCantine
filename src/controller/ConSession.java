@@ -39,8 +39,7 @@ public class ConSession implements ActionListener {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root",
-                    "110401Sultan77");
+            Connection con = DriverManager.getConnection(config.url, config.user, config.password);
             String sql = "INSERT INTO cantineV2.SESSION (JOUR_RESERVATION, HEURE, NOMBRE_PLACE, Menu_normal, Menu_veg) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, tfdate.getText());
@@ -50,14 +49,16 @@ public class ConSession implements ActionListener {
             pst.setInt(5, Integer.parseInt(tfmenuv.getText()));
             pst.executeUpdate();
 
-            // JOptionPane.showMessageDialog(null, "Connection Réussie");
+            
             JOptionPane.showMessageDialog(null, "Session ajouté");
             tfdate.setText("");
             tfheure.setText("");
             tfmenu.setText("");
             tfmenuv.setText("");
             con.close();
-        } catch (Exception ez) {
+        } 
+
+        catch (Exception ez) {
             JOptionPane.showMessageDialog(null, ez);
 
         }

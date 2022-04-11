@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ReserverSession;
+import controller.config;
 import view.parentinterface;
 /**
  *
@@ -89,7 +90,7 @@ public class Sessionsparent extends javax.swing.JFrame {
             jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try{
-           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+           Connection con = DriverManager.getConnection(config.url, config.user, config.password);
                 int row = jTable1.getSelectedRow();
                 String a = jTextField1.getText();
                 String cell = jTable1.getModel().getValueAt(row, 0).toString();
@@ -215,7 +216,7 @@ public void ShowTable() {
         String add2;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantineV2", "root","110401Sultan77");
+            Connection con = DriverManager.getConnection(config.url, config.user, config.password);
             String sql = "SELECT * FROM cantineV2.SESSION";
             //String sql3 = "SELECT * FROM cantineV2.SESSION where idSESSION =? ";
             PreparedStatement pst = con.prepareStatement(sql);
