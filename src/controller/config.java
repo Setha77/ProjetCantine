@@ -2,8 +2,8 @@ package controller;
 
 public class config{
 
-    public static String url = "jdbc:mysql://localhost:3306/cantineV2";
+    public static String url = "jdbc:mysql://localhost:3306/cantine";
     public static String user = "root";
-    public static String password = "110401Sultan77";
+    public static String password = "Babyonbaby";
     
 }

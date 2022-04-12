@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import view.Sessionsparent;
 import view.login;
@@ -26,15 +27,26 @@ JTextField j2;
   }
   public void actionPerformed(ActionEvent e ) {
       try{
-
+        Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(config.url, config.user, config.password);
         int row = j1.getSelectedRow();
         String a = j2.getText();
         String cell = j1.getModel().getValueAt(row, 0).toString();
-        String sql2 ="INSERT INTO  cantineV2.SESSION_has_ENFANT(ENFANT_idENFANT,idSESSION) VALUES("+a+","+cell+")"; 
+        String sql3 = "SELECT NOMBRE_PLACE FROM SESSION WHERE idSESSION="+Integer.parseInt(cell)+"";
+        PreparedStatement pst3 = con.prepareStatement(sql3);
+       // pst3.setInt(1, Integer.parseInt(cell));
+        ResultSet rs = pst3.executeQuery(sql3);
+        int g = rs.getInt("NOMBRE_PLACE");
+        int s = g -1;
+        //String sql = "UPDATE cantine.SESSION SET NOMBRE_PLACE=NOMBRE_PLACE - 1 where idSESSION=?";
+        
+        String sql2 ="INSERT INTO  cantine.SESSION_has_ENFANT(ENFANT_idENFANT,SESSION_idSESSION) VALUES("+a+","+cell+")"; 
         PreparedStatement pst2 = con.prepareStatement(sql2);
+        //PreparedStatement pst = con.prepareStatement(sql);
+        //pst.setString(1, cell);
+       //pst.executeUpdate(sql);
         // pst2.setString(1,cell); 
-        pst2.execute(sql2);
+        pst2.executeUpdate(sql2);
         JOptionPane.showMessageDialog(null, "Votre enfant à été Inscrit à la Session" +cell+ " ... ");
                 
                   

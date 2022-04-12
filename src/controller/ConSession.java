@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import view.admininterface;
 import view.login;
 import view.parentinterface;
 
@@ -40,7 +41,7 @@ public class ConSession implements ActionListener {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(config.url, config.user, config.password);
-            String sql = "INSERT INTO cantineV2.SESSION (JOUR_RESERVATION, HEURE, NOMBRE_PLACE, Menu_normal, Menu_veg) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO cantine.SESSION (JOUR_RESERVATION, HEURE, NOMBRE_PLACE, Menu_normal, Menu_veg) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, tfdate.getText());
             pst.setString(2, tfheure.getText());
@@ -56,6 +57,7 @@ public class ConSession implements ActionListener {
             tfmenu.setText("");
             tfmenuv.setText("");
             con.close();
+          
         } 
 
         catch (Exception ez) {

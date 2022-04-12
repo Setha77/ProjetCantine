@@ -7,14 +7,17 @@ package view;
 import view.enfantsparent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import controller.ConSuppEnfant;
+import controller.config;
 /**
  *
  * @author 33781
  */
 public class parentinterface extends javax.swing.JFrame {
-      
+      String a = login.Id;
     /**
      * Creates new form parentinterface
      */
@@ -69,7 +72,7 @@ public class parentinterface extends javax.swing.JFrame {
 
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setText("NOM PRENOM");
+        jLabel2.setText("Session de " +a);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,7 +155,7 @@ public class parentinterface extends javax.swing.JFrame {
             }
         });
     }
-
+           
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;

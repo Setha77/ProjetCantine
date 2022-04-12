@@ -37,7 +37,7 @@ public class ConSuppEnfant implements ActionListener {
             Connection con = DriverManager.getConnection(config.url, config.user, config.password);
             int row = j.getSelectedRow();
             String cell = j.getModel().getValueAt(row, 0).toString();
-            String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE (ENFANT_idENFANT = "+cell+") "; 
+            String sql2 ="DELETE FROM cantine.PARENT_has_ENFANT WHERE (ENFANT_idENFANT = "+cell+") "; 
             PreparedStatement pst2 = con.prepareStatement(sql2);
             //pst2.setString(1,cell); 
             pst2.executeUpdate(sql2);

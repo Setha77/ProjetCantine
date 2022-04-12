@@ -46,7 +46,7 @@ public class ConEnfant implements ActionListener {
             if (rs.next()){*/
                // String a = NomEnfant.getText();
                // String b = PrenomEnfant.getText();
-                String sql2 ="INSERT INTO cantineV2.PARENT_has_ENFANT(PARENT_PARENT_ID,ENFANT_idENFANT) VALUES ("+idParent.getText()+","+idEnfant.getText()+")"; 
+                String sql2 ="INSERT INTO cantine.PARENT_has_ENFANT(PARENT_PARENT_ID,ENFANT_idENFANT) VALUES ("+idParent.getText()+","+idEnfant.getText()+")"; 
                 PreparedStatement pst2 = con.prepareStatement(sql2);
                // pst2.setInt(1,Integer.parseInt(idParent.getText() ));
                // pst2.setInt(2,Integer.parseInt(idEnfant.getText()));

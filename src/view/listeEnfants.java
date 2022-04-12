@@ -165,13 +165,13 @@ public void ShowTable() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(config.url, config.user, config.password);
-            String sql2 = "SELECT * FROM cantineV2.SESSION_has_ENFANT";
+            String sql2 = "SELECT * FROM cantine.SESSION_has_ENFANT";
             PreparedStatement pst2 = con.prepareStatement(sql2);
             ResultSet rs2 = pst2.executeQuery();
             DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
             tm.setRowCount(0);
             while ( rs2.next()) {
-                Object o[] = { rs2.getInt("idSESSION"),rs2.getInt("ENFANT_idENFANT")};
+                Object o[] = { rs2.getInt("SESSION_idSESSION"),rs2.getInt("ENFANT_idENFANT")};
                 tm.addRow(o);
             }
             con.close();

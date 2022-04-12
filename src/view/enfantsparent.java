@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import com.mysql.cj.xdevapi.PreparableStatement;
+//import com.mysql.cj.xdevapi.PreparableStatement;
 
 import controller.ConEnfant;
 import controller.ConSuppEnfant;
@@ -94,7 +94,7 @@ public class enfantsparent extends javax.swing.JFrame {
                     Connection con = DriverManager.getConnection(config.url, config.user, config.password);
                     int row = jTable1.getSelectedRow();
                     String cell = jTable1.getModel().getValueAt(row, 1).toString();
-                    String sql2 ="DELETE FROM cantineV2.PARENT_has_ENFANT WHERE ENFANT_idENFANT = "+cell; 
+                    String sql2 ="DELETE FROM cantine.PARENT_has_ENFANT WHERE ENFANT_idENFANT = "+cell; 
                     PreparedStatement pst2 = con.prepareStatement(sql2);
                     //  pst2.setString(1,cell); 
                     pst2.execute(sql2);
@@ -253,7 +253,7 @@ public class enfantsparent extends javax.swing.JFrame {
            
             if (rs2.next()){
                      add2 = rs2.getString("PARENT_ID");
-            String sql = "SELECT * FROM cantineV2.PARENT_has_ENFANT where PARENT_PARENT_ID = ?";
+            String sql = "SELECT * FROM cantine.PARENT_has_ENFANT where PARENT_PARENT_ID = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1,add2);
             ResultSet rs = pst.executeQuery();
