@@ -22,3 +22,6 @@ Exemple d'identifiants d'un Admin pour pouvoir naviguer sur le logiciel:
 
 login : JC
 Mot de passe : blabla
+
+
+Si vous souhaitez essayer avec d'autres exemples, veuillez regardez la base de données pour trouver les informations voulues. Elles sont dans les tables PARENT et PARENT_has_ENFANT.
