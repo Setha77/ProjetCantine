@@ -1,18 +1,24 @@
-## Getting Started
+## Pré-requis
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Nous utilisons MySql Workbench pour la base de données.
+Il faut lier la base de données au programme pour cela, mettez les inforamtions de la base de donnée dans le fichier config.
 
-## Folder Structure
+## Note 
 
-The workspace contains two folders by default, where:
+!Attention!
+La partie model dans le code n'est pas liée au reste du programme, elle est juste là pour vous présenter notre première approche du projet, mais elle n'est pas utilisée car nous utilisons la base de donnée comme modele.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+L'ecole est responsable de la gestion des enfants et des parents dans la  base de données et elle envoie les id des parents, des enfants et leur mot de passe par mail ou par autre moyen de transmission. Autrement dit, lorsque un enfant est inscrit dans l'école, il est automatiquement enregistré dans la base de données et le compte de ses deux parents est créée. Les parents n'ont donc pas besoin de creer de compte.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Lancer le main dans Executeur.java pour lancer le programme.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Exemple d'identifiants d'un Parent pour pouvoir naviguer sur le logiciel:
 
-## Dependency Management
+login : JR
+Mot de passe : Logh796UC
+ID Enfant : 12
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Exemple d'identifiants d'un Admin pour pouvoir naviguer sur le logiciel:
+
+login : JC
+Mot de passe : blabla
