@@ -1,7 +1,7 @@
 ## Pré-requis
 
 Nous utilisons MySql Workbench pour la base de données.
-Il faut lier la base de données au programme pour cela, mettez les inforamtions de la base de donnée dans le fichier config.
+Il faut lier la base de données au programme pour cela, mettez les informations de la base de donnée dans le fichier config.
 
 ## Note 
 
