@@ -4,7 +4,7 @@
  */
 package view;
 import java.awt.event.ActionEvent;
-import controller.Con;
+
 import controller.ConAdmin;
 
 /**
@@ -21,7 +21,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPasswordField jPasswordField1;
     public javax.swing.JTextField jTextField1;
-    private Con connecteur = new Con (jTextField1,jPasswordField1);
+  
     private ConAdmin conAdmin = new ConAdmin (jTextField1,jPasswordField1);
     static login p = new login();
     public static String Id;
