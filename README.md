@@ -1,5 +1,7 @@
 ## Pré-requis
 
+La Base de données en SQL est dans le fichier Database !
+
 Nous utilisons MySql Workbench pour la base de données.
 Il faut lier la base de données au programme pour cela, mettez les informations de la base de donnée dans le fichier config.
 
