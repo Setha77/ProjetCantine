@@ -8,6 +8,7 @@ public class Parent extends Personne {
 	String login;
 	String motdepasse;
 	int PARENT_ID;
+	
 	public Parent(String n, String p, String s, String d, String l, String mdp) {
 		super(n, p, s, d);
 		this.login=l;

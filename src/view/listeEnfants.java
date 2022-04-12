@@ -171,7 +171,7 @@ public void ShowTable() {
             DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
             tm.setRowCount(0);
             while ( rs2.next()) {
-                Object o[] = { rs2.getInt("ENFANT_idENFANT"),rs2.getInt("idSESSION")};
+                Object o[] = { rs2.getInt("idSESSION"),rs2.getInt("ENFANT_idENFANT")};
                 tm.addRow(o);
             }
             con.close();
